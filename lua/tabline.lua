@@ -49,7 +49,6 @@ M.consts = {
 }
 
 M.pages = {
-  count = 0,
   active_tab_index = 0,
   previous_active_tab_index = 0,
   view_begin_index = 0,
@@ -74,7 +73,6 @@ function M.pages:get(index)
       string_length = 0,
     }
     table.insert(self.tabs, tab)
-    self.count = self.count + 1
   else
     if tab.index ~= index then
       if self.previous_active_tab_index == tab.index then
@@ -310,7 +308,7 @@ local function GetTabline(options)
       if s_length < available_width then
         s_nr_tabs = s_nr_tabs .. '%#TabLineFill#%='
       end
-      s_nr_tabs = s_nr_tabs .. ' [' .. M.pages.count .. ']'
+      s_nr_tabs = s_nr_tabs .. ' [' .. nr_tabs .. ']'
       s_nr_tabs_length = utf8.len(s_nr_tabs)
       available_width = available_width - s_nr_tabs_length
     end
